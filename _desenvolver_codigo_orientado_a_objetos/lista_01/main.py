@@ -1,7 +1,10 @@
-from humano_ex1.humano import Pessoa
-from gato_cachorro_ex2.cachorro import Cachorro
-from gato_cachorro_ex2.gato import Gato
-from carro_ex3.carro import Carro
+from ex1_humano.humano import Pessoa
+from ex2_gato_cachorro.cachorro import Cachorro
+from ex2_gato_cachorro.gato import Gato
+from ex3_carro.carro import Carro
+from ex5_escolar.estudante import Estudante
+from ex5_escolar.curso import Curso
+
 
 def main():
 
@@ -9,6 +12,9 @@ def main():
     cachorrinho = Cachorro()
     gatinho = Gato()
     carro = Carro()
+    estudante = Estudante()
+    curso = Curso()
+
 
     while True:
         print("\n", "=" * 20)
@@ -16,9 +22,9 @@ def main():
         print("\n 1 - Classe que representa uma pessoa.")
         print(" 2 - Módulo de gato e cachorro.")
         print(" 3 - Atualizar seu carro.")
-        print(" 5 - Gerenciar estudantes.")
-        print("\n", "=" * 20)
-        exercicio_escolhido = int(input("\n Escolha um exercício (1-10): "))
+        print(" 5 - Gerenciar estudantes.") # ARRUMAR EM CASA N ENTENDI NADA
+        print( "=" * 20)
+        exercicio_escolhido = int(input(" Escolha um exercício (1-10): "))
         print("=" * 20)
 
         match exercicio_escolhido:
@@ -30,8 +36,12 @@ def main():
                 humano.apresentacao_pessoal()
 
             case 2:
+                cachorrinho.dog_name = input("Digite um nome de cachorro: ")
+                cachorrinho.dog_race = input("Digite uma raça de cachorro: ")
+                gatinho.cat_name = input("Digite um nome de gato: ")
+                gatinho.cat_color = input("Digite uma cor de gato: ")
+                print("=" * 20)
                 cachorrinho.dog_bark()
-
                 gatinho.cat_meow()
             
             case 3:
@@ -42,20 +52,34 @@ def main():
             case 5:
 
                 while True:
-
+                    
+                    print("MENU ESCOLAR")
                     print("1 - Adicionar estudante. ")
-                    print("2 - Exibir boletins. ")
+                    print("2 - Adicionar curso e nota. ")
+                    print("3 - Exibir boletins. ")
                     print("0 - Sair")
                     opcao = int(input("Escolha: "))
 
                     match opcao: 
 
                         case 1:
-                            print()
+                            estudante.nome_aluno = input("Digite o nome do estudante: ")
+                            print("=" * 20)
+                            estudante.idade = int(input("Digite a idade do estudante: "))
+                            print("=" * 20)
+                            estudante.matricula = input("Digite uma matrícula para o estudante: ")
+                            print("=" * 20)
                         
                         case 2:
-                            print
-                        
+                            curso = input("Nome da matéria: ")
+                            repeticoes = int(input("Nota do curso: "))
+                            novo_estudante = Curso(curso, repeticoes)
+                            estudante.adicionar_estudante(novo_estudante)
+                            print(f"Notas do estudante adicionadas no sistema!")
+
+                        case 3:
+                            estudante.mostrar_notas()
+                            
                         case 0:
                             print("Encerrando programa...")
                             break
@@ -63,6 +87,8 @@ def main():
                         case _:
                             print(f"A opção {opcao} é inválida!")
 
+            case 6:
+                print()
 
             case 0:
                 print("Encerrando programa...")
