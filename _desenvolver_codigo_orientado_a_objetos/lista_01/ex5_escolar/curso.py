@@ -1,8 +1,11 @@
 class Curso:
     
-    def __init__(self, materia="Matéria vazia", nota=0):
+    def __init__(self, materia="Matéria vazia"):
         self.materia = materia
-        self.nota = nota
 
-    def mostrar_boletim(self):
-        print(f"Curso de {self.materia} - {self.nota}")
+    def mostrar_boletins(self):
+        print(f"Curso de {self.materia}:")
+
+    
+
+    

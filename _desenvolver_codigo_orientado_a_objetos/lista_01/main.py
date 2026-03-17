@@ -4,6 +4,8 @@ from ex2_gato_cachorro.gato import Gato
 from ex3_carro.carro import Carro
 from ex5_escolar.estudante import Estudante
 from ex5_escolar.curso import Curso
+from ex6_biblioteca.bibliotecario import Bibliotecario
+from ex6_biblioteca.livro import Livro
 
 
 def main():
@@ -14,6 +16,8 @@ def main():
     carro = Carro()
     estudante = Estudante()
     curso = Curso()
+    bibliotecario = Bibliotecario()
+    livro = Livro()
 
 
     while True:
@@ -23,6 +27,7 @@ def main():
         print(" 2 - Módulo de gato e cachorro.")
         print(" 3 - Atualizar seu carro.")
         print(" 5 - Gerenciar estudantes.") # ARRUMAR EM CASA N ENTENDI NADA
+        print(" 6 - Gerenciar livros.")
         print( "=" * 20)
         exercicio_escolhido = int(input(" Escolha um exercício (1-10): "))
         print("=" * 20)
@@ -30,19 +35,37 @@ def main():
         match exercicio_escolhido:
 
             case 1:
-                humano.humano_nome = input("Qual é seu nome? ")
-                humano.humano_idade = int(input("Qual é sua idade? "))
-                print("=" * 20)
-                humano.apresentacao_pessoal()
+                while True:
+                    try:
+                        humano.humano_nome = input("Qual é seu nome? ")
+                        humano.humano_idade = int(input("Qual é sua idade? "))
+                        print("=" * 20)
+                        continue
+
+                    except ValueError as e:
+                        print(f"Entrada de dados inválida. Erro = ", e)
+
+                    if humano.humano_nome.isalpha() and (humano.humano_idade >=1, humano.humano_idade <= 100):
+                        humano.apresentacao_pessoal()
+                        break
 
             case 2:
-                cachorrinho.dog_name = input("Digite um nome de cachorro: ")
-                cachorrinho.dog_race = input("Digite uma raça de cachorro: ")
-                gatinho.cat_name = input("Digite um nome de gato: ")
-                gatinho.cat_color = input("Digite uma cor de gato: ")
-                print("=" * 20)
-                cachorrinho.dog_bark()
-                gatinho.cat_meow()
+                while True:
+                    try:
+                        cachorrinho.dog_name = input("Digite um nome de cachorro: ")
+                        cachorrinho.dog_race = input("Digite uma raça de cachorro: ")
+                        gatinho.cat_name = input("Digite um nome de gato: ")
+                        gatinho.cat_color = input("Digite uma cor de gato: ")
+                        print("=" * 20)
+                        continue
+
+                    except ValueError as e:
+                        print(f"Entrada de dados inválida. Erro = ", e)
+
+                    finally:
+                        cachorrinho.dog_bark()
+                        gatinho.cat_meow()
+                        break
             
             case 3:
                 carro.atualizar_placa(nova_placa = input("Digite uma nova placa para seu carro: "))
@@ -69,11 +92,12 @@ def main():
                             print("=" * 20)
                             estudante.matricula = input("Digite uma matrícula para o estudante: ")
                             print("=" * 20)
+                            estudante.nota = int(input("Digite a nota:"))
+                            print("=" * 20)
                         
                         case 2:
                             curso = input("Nome da matéria: ")
-                            repeticoes = int(input("Nota do curso: "))
-                            novo_estudante = Curso(curso, repeticoes)
+                            novo_estudante = Curso(curso, estudante)
                             estudante.adicionar_estudante(novo_estudante)
                             print(f"Notas do estudante adicionadas no sistema!")
 
@@ -88,7 +112,27 @@ def main():
                             print(f"A opção {opcao} é inválida!")
 
             case 6:
-                print()
+                
+                while True:
+
+                    print("MENU BIBLIOTECA")
+                    print("1 - Cadastrar livro.")
+                    print("2 - Adicionar livro")
+
+                    opcao = int(input("Escolha:"))
+
+                    match opcao:
+
+                        case 1:
+                            print()
+
+
+                        case 0:
+                            print("Encerrando programa...")
+                            break
+        
+                        case _:
+                            print(f"A opção {opcao} é inválida!")
 
             case 0:
                 print("Encerrando programa...")
