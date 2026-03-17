@@ -5,9 +5,5 @@ class Bibliotecario:
         self.dias = dias
         self.valor = valor
 
-    def __init__(self, nome="Livre", repeticoes=3):
-        self.nome = nome
-        self.repeticoes = repeticoes
-
     def mostrar_emprestimos(self):
-        print(f"Alugante: {self.nome_bibliotecario} / Dias: {self.dias} / Valor: {self.valor} / Repetições: {self.repeticoes}")
+        print(f"Alugante: {self.nome_bibliotecario} / Dias: {self.dias} / Valor: {self.valor}.")

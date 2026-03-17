@@ -116,16 +116,29 @@ def main():
                 while True:
 
                     print("MENU BIBLIOTECA")
-                    print("1 - Cadastrar livro.")
-                    print("2 - Adicionar livro")
+                    print("1 - Mostrar Empréstimos.")
+                    print("2 - Adicionar livro.")
+                    print("3 - Adicionar bibliotecarios.")
+                    print("4 - Adicionar empréstimo.")
 
                     opcao = int(input("Escolha:"))
 
                     match opcao:
 
                         case 1:
-                            print()
+                            bibliotecario.mostrar_emprestimos()
 
+                        case 2:
+                            livro.nome_livro = input("Digite o nome do livro: ")
+                            print("Livro inserido com sucesso!")
+
+                        case 3:
+                            bibliotecario.nome_bibliotecario = input("Nome do bibliotecário: ")
+                            bibliotecario.dias = int(input("Quantos dias de aluguel? "))
+                            bibliotecario.valor = float(input("Digite o valor do empréstimo: "))
+
+                        case 4:
+                            livro.adicionar_emprestimo()
 
                         case 0:
                             print("Encerrando programa...")
