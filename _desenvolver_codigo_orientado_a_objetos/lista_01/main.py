@@ -2,6 +2,8 @@ from ex1_humano.humano import Pessoa
 from ex2_gato_cachorro.cachorro import Cachorro
 from ex2_gato_cachorro.gato import Gato
 from ex3_carro.carro import Carro
+from ex4_banco.banco import Banco
+from ex4_banco.titular import Titular
 from ex5_escolar.estudante import Estudante
 from ex5_escolar.curso import Curso
 from ex6_biblioteca.bibliotecario import Bibliotecario
@@ -14,7 +16,9 @@ def main():
     cachorrinho = Cachorro()
     gatinho = Gato()
     carro = Carro()
-    estudante = Estudante()
+    banco = Banco()
+    titular = Titular()
+    aluno = Estudante()
     curso = Curso()
     bibliotecario = Bibliotecario()
     livro = Livro()
@@ -26,6 +30,7 @@ def main():
         print("\n 1 - Classe que representa uma pessoa.")
         print(" 2 - Módulo de gato e cachorro.")
         print(" 3 - Atualizar seu carro.")
+        print(" 4 - Sistema Bancário.")
         print(" 5 - Gerenciar estudantes.") # ARRUMAR E POLIR
         print(" 6 - Gerenciar livros.") # Ajeitar tudo
         print( "=" * 20)
@@ -84,14 +89,14 @@ def main():
                     match opcao:
                         case "1":
                             valor = float(input("Valor: "))
-                            banco.depositar(conta, valor)
+                            banco.depositar(banco, valor)
 
                         case "2":
                             valor = float(input("Valor: "))
-                            banco.sacar(conta, valor)
+                            banco.sacar(titular, valor)
 
                         case "3":
-                            banco.mostrar_info(conta)
+                            banco.mostrar_info(titular)
 
                         case "0":
                             break
@@ -196,9 +201,6 @@ def main():
 
                         case "5":
                             bibliotecario.mostrar_info()
-                        
-            case _:
-                print(f"A opção {opcao} é inválida!")
 
             case 0:
                 print("Encerrando programa...")

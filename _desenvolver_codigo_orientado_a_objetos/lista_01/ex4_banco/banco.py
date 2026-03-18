@@ -1,5 +1,5 @@
 class Banco:
-    def depositar(self, conta, valor):
+    def depositar(self, conta="Conta Vazia", valor=0):
         if valor > 0:
             conta.saldo += valor
             print("Depósito realizado!")

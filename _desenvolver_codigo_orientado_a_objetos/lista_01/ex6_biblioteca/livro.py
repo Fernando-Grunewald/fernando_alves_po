@@ -1,5 +1,5 @@
 class Livro:
-    def __init__(self, titulo):
+    def __init__(self, titulo="Título Vazio"):
         self.titulo = titulo
         self.disponivel = True
         self.historico = []  # pessoas que já pegaram

@@ -1,5 +1,5 @@
 class Bibliotecario:
-    def __init__(self, nome):
+    def __init__(self, nome="Bibliotecario Vazio"):
         self.nome = nome
         self.livros_emprestados = []
 
