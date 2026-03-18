@@ -26,8 +26,8 @@ def main():
         print("\n 1 - Classe que representa uma pessoa.")
         print(" 2 - Módulo de gato e cachorro.")
         print(" 3 - Atualizar seu carro.")
-        print(" 5 - Gerenciar estudantes.") # ARRUMAR EM CASA N ENTENDI NADA
-        print(" 6 - Gerenciar livros.")
+        print(" 5 - Gerenciar estudantes.") # ARRUMAR E POLIR
+        print(" 6 - Gerenciar livros.") # Ajeitar tudo
         print( "=" * 20)
         exercicio_escolhido = int(input(" Escolha um exercício (1-10): "))
         print("=" * 20)
@@ -71,81 +71,134 @@ def main():
                 carro.atualizar_placa(nova_placa = input("Digite uma nova placa para seu carro: "))
                 print("=" * 20)
                 carro.atualizar_quilometragem(nova_quilometragem = int(input("Quantos KM seu carro andou hoje? ")))
+                
+            case 4:
+                while True:
+                    print("\n1 - Depositar")
+                    print("2 - Sacar")
+                    print("3 - Ver conta")
+                    print("0 - Sair")
+
+                    opcao = input("Escolha: ")
+
+                    match opcao:
+                        case "1":
+                            valor = float(input("Valor: "))
+                            banco.depositar(conta, valor)
+
+                        case "2":
+                            valor = float(input("Valor: "))
+                            banco.sacar(conta, valor)
+
+                        case "3":
+                            banco.mostrar_info(conta)
+
+                        case "0":
+                            break
+
+                        case _:
+                            print("Opção inválida.")
 
             case 5:
 
                 while True:
-                    
-                    print("MENU ESCOLAR")
-                    print("1 - Adicionar estudante. ")
-                    print("2 - Adicionar curso e nota. ")
-                    print("3 - Exibir boletins. ")
-                    print("0 - Sair")
-                    opcao = int(input("Escolha: "))
+                        print("\n1 - Adicionar estudante")
+                        print("2 - Adicionar nota")
+                        print("3 - Listar estudantes")
+                        print("0 - Sair")
 
-                    match opcao: 
+                        opcao = input("Escolha: ")
 
-                        case 1:
-                            estudante.nome_aluno = input("Digite o nome do estudante: ")
-                            print("=" * 20)
-                            estudante.idade = int(input("Digite a idade do estudante: "))
-                            print("=" * 20)
-                            estudante.matricula = input("Digite uma matrícula para o estudante: ")
-                            print("=" * 20)
-                            estudante.nota = int(input("Digite a nota:"))
-                            print("=" * 20)
-                        
-                        case 2:
-                            curso = input("Nome da matéria: ")
-                            novo_estudante = Curso(curso, estudante)
-                            estudante.adicionar_estudante(novo_estudante)
-                            print(f"Notas do estudante adicionadas no sistema!")
+                        match opcao:
+                            case "1":
+                                nome = input("Nome: ")
+                                idade = int(input("Idade: "))
+                                matricula = input("Matrícula: ")
 
-                        case 3:
-                            estudante.mostrar_notas()
+                                aluno = Estudante(nome, idade, matricula)
+                                curso.adicionar_estudante(aluno)
+
+                                print("Estudante adicionado!")
+
+                            case "2":
+                                if len(curso.estudantes) == 0:
+                                    print("Nenhum estudante cadastrado.")
+                                    continue
+
+                                print("\nEscolha o estudante:")
+                                for i, est in enumerate(curso.estudantes):
+                                    print(f"{i} - {est.nome}")
+
+                                indice = int(input("Número: "))
+                                nota = float(input("Nota: "))
+
+                                curso.estudantes[indice].adicionar_nota(nota)
+                                print("Nota adicionada!")
+
+                            case "3":
+                                curso.listar_estudantes()
                             
-                        case 0:
-                            print("Encerrando programa...")
-                            break
-        
-                        case _:
-                            print(f"A opção {opcao} é inválida!")
+                            case 0:
+                                print("Encerrando programa...")
+                                break
+            
+                            case _:
+                                print(f"A opção {opcao} é inválida!")
 
-            case 6:
+            case 6: 
                 
                 while True:
+                    print("\n1 - Adicionar livro")
+                    print("2 - Emprestar livro")
+                    print("3 - Devolver livro")
+                    print("4 - Listar livros")
+                    print("5 - Ver bibliotecário")
+                    print("0 - Sair")
 
-                    print("MENU BIBLIOTECA")
-                    print("1 - Mostrar Empréstimos.")
-                    print("2 - Adicionar livro.")
-                    print("3 - Adicionar bibliotecarios.")
-                    print("4 - Adicionar empréstimo.")
-
-                    opcao = int(input("Escolha:"))
+                    opcao = input("Escolha: ")
 
                     match opcao:
+                        case "1":
+                            titulo = input("Título do livro: ")
+                            livro = Livro(titulo)
+                            livros.append(livro)
+                            print("Livro adicionado!")
 
-                        case 1:
-                            bibliotecario.mostrar_emprestimos()
+                        case "2":
+                            if len(livros) == 0:
+                                print("Nenhum livro cadastrado.")
+                                continue
 
-                        case 2:
-                            livro.nome_livro = input("Digite o nome do livro: ")
-                            print("Livro inserido com sucesso!")
+                            for i, livro in enumerate(livros):
+                                print(f"{i} - {livro.titulo}")
 
-                        case 3:
-                            bibliotecario.nome_bibliotecario = input("Nome do bibliotecário: ")
-                            bibliotecario.dias = int(input("Quantos dias de aluguel? "))
-                            bibliotecario.valor = float(input("Digite o valor do empréstimo: "))
+                            indice = int(input("Escolha o livro: "))
+                            bibliotecario.emprestar_livro(livros[indice])
 
-                        case 4:
-                            livro.adicionar_emprestimo()
+                        case "3":
+                            if len(bibliotecario.livros_emprestados) == 0:
+                                print("Nenhum livro para devolver.")
+                                continue
 
-                        case 0:
-                            print("Encerrando programa...")
-                            break
-        
-                        case _:
-                            print(f"A opção {opcao} é inválida!")
+                            for i, livro in enumerate(bibliotecario.livros_emprestados):
+                                print(f"{i} - {livro.titulo}")
+
+                            indice = int(input("Escolha o livro: "))
+                            bibliotecario.devolver_livro(bibliotecario.livros_emprestados[indice])
+
+                        case "4":
+                            if len(livros) == 0:
+                                print("Nenhum livro cadastrado.")
+                            else:
+                                for livro in livros:
+                                    livro.mostrar_info()
+                                    print("-" * 20)
+
+                        case "5":
+                            bibliotecario.mostrar_info()
+                        
+            case _:
+                print(f"A opção {opcao} é inválida!")
 
             case 0:
                 print("Encerrando programa...")

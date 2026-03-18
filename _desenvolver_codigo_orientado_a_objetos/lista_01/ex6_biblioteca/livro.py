@@ -1,13 +1,21 @@
-class Livro: #adicionar status de emprestado ou disponivel
+class Livro:
+    def __init__(self, titulo):
+        self.titulo = titulo
+        self.disponivel = True
+        self.historico = []  # pessoas que já pegaram
 
-    def __init__(self, nome_livro="Livro Sem Nome",):
-        self.nome_livro = nome_livro
-        self.lista_livros = []
+    def emprestar(self, nome_usuario):
+        if self.disponivel:
+            self.disponivel = False
+            self.historico.append(nome_usuario)
+            return True
+        return False
 
-    def adicionar_emprestimo(self, bibliotecario):
-        self.lista_livros.append(bibliotecario)
+    def devolver(self):
+        self.disponivel = True
 
-    def mostrar_livro(self):
-        print(f"Livro: {self.nome_livro}")
-        for e in self.lista_livros:
-            e.emprestimo_registros()
+    def mostrar_info(self):
+        status = "Disponível" if self.disponivel else "Emprestado"
+        print(f"Livro: {self.titulo}")
+        print(f"Status: {status}")
+        print(f"Histórico: {self.historico}")
