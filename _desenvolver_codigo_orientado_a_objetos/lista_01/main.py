@@ -159,14 +159,14 @@ def main():
                     print("4 - Listar livros")
                     print("5 - Ver bibliotecário")
                     print("0 - Sair")
-
+                    
                     opcao = input("Escolha: ")
 
                     match opcao:
                         case "1":
                             titulo = input("Título do livro: ")
                             livro = Livro(titulo)
-                            livros.append(livro)
+                            titulo.livros.append(livro)
                             print("Livro adicionado!")
 
                         case "2":

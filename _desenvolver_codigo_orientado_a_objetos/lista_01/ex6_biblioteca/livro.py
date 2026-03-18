@@ -2,6 +2,7 @@ class Livro:
     def __init__(self, titulo="Título Vazio"):
         self.titulo = titulo
         self.disponivel = True
+        self.livros = []
         self.historico = []  # pessoas que já pegaram
 
     def emprestar(self, nome_usuario):
