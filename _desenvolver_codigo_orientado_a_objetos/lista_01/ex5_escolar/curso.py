@@ -8,6 +8,7 @@ class Curso:
 
     def listar_estudantes(self):
         print(f"\nCurso: {self.nome}")
+        print("=" *20)
         for estudante in self.estudantes:
             estudante.mostrar_dados()
             print("-" * 20)

@@ -9,7 +9,6 @@ from ex5_escolar.curso import Curso
 from ex6_biblioteca.bibliotecario import Bibliotecario
 from ex6_biblioteca.livro import Livro
 
-
 def main():
 
     humano = Pessoa()
@@ -45,14 +44,15 @@ def main():
                         humano.humano_nome = input("Qual é seu nome? ")
                         humano.humano_idade = int(input("Qual é sua idade? "))
                         print("=" * 20)
-                        continue
+
+                        if humano.humano_nome.isalpha() and (humano.humano_idade >=1, humano.humano_idade <= 100):
+                            humano.apresentacao_pessoal()
+                            break
 
                     except ValueError as e:
                         print(f"Entrada de dados inválida. Erro = ", e)
 
-                    if humano.humano_nome.isalpha() and (humano.humano_idade >=1, humano.humano_idade <= 100):
-                        humano.apresentacao_pessoal()
-                        break
+                    
 
             case 2:
                 while True:
@@ -159,14 +159,16 @@ def main():
                     print("4 - Listar livros")
                     print("5 - Ver bibliotecário")
                     print("0 - Sair")
+                    livros = []
                     
                     opcao = input("Escolha: ")
 
                     match opcao:
                         case "1":
-                            titulo = input("Título do livro: ")
-                            livro = Livro(titulo)
-                            titulo.livros.append(livro)
+                            
+                            livros = input("Título do livro: ")
+                            livros = Livro(livro)
+                            livros.append(livro)
                             print("Livro adicionado!")
 
                         case "2":
