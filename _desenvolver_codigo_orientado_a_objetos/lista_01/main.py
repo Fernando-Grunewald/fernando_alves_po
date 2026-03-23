@@ -8,6 +8,8 @@ from ex5_escolar.estudante import Estudante
 from ex5_escolar.curso import Curso
 from ex6_biblioteca.bibliotecario import Bibliotecario
 from ex6_biblioteca.livro import Livro
+from ex7_dep_func.departamento import Departamento
+from ex7_dep_func.funcionario import Funcionario
 
 # ADICIONAR ENCAPSULAMENTO!
 
@@ -23,7 +25,8 @@ def main():
     curso = Curso()
     bibliotecario = Bibliotecario()
     livro = Livro()
-
+    departamento = Departamento()
+    funcionario = Funcionario()
 
     while True:
         print("\n", "=" * 20)
@@ -34,6 +37,8 @@ def main():
         print(" 4 - Sistema Bancário.")
         print(" 5 - Gerenciar estudantes.") # ARRUMAR E POLIR
         print(" 6 - Gerenciar livros.") # Ajeitar tudo
+        print(" 7 - Departamento de Funcionários.")
+        print(" 8 - Mercado Online.")
         print( "=" * 20)
         exercicio_escolhido = int(input(" Escolha um exercício (1-10): "))
         print("=" * 20)
@@ -53,8 +58,6 @@ def main():
 
                     except ValueError as e:
                         print(f"Entrada de dados inválida. Erro = ", e)
-
-                    
 
             case 2:
                 while True:
@@ -205,6 +208,41 @@ def main():
 
                         case "5":
                             bibliotecario.mostrar_info()
+
+            case 7:
+
+                while True:
+                    print("1 - Adicionar funcionários.")
+                    print("2 - Adicionar salário.")
+                    print("3 - Mostrar todos funcionários.")
+                    print("0 - Sair.")
+                    print("-" * 20)
+                    funcionarios = []
+
+                    operacoes = input("Escolha:")
+
+                    match operacoes:
+                        case "1":
+                            funcionario.inserir_funcionario()
+                            funcionarios.append(funcionario)
+                        case "2":
+                            funcionario.editar_salario()
+
+                        case "3":
+                            departamento.listar_funcionarios()
+
+                        case "0":
+                            print("Encerrando programa...")
+                            break
+
+                        case _:
+                            print(f"A opção {operacoes} é inválida!")
+
+            case 8:
+
+            # case 9:
+
+            # case 10:
 
             case 0:
                 print("Encerrando programa...")
