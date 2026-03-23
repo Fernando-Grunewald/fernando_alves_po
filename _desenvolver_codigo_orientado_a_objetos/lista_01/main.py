@@ -9,6 +9,8 @@ from ex5_escolar.curso import Curso
 from ex6_biblioteca.bibliotecario import Bibliotecario
 from ex6_biblioteca.livro import Livro
 
+# ADICIONAR ENCAPSULAMENTO!
+
 def main():
 
     humano = Pessoa()
