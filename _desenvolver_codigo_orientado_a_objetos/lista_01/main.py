@@ -1,20 +1,4 @@
-from ex1_humano.humano import Pessoa
-from ex2_gato_cachorro.cachorro import Cachorro
-from ex2_gato_cachorro.gato import Gato
-from ex3_carro.carro import Carro
-from ex4_banco.banco import Banco
-from ex4_banco.titular import Titular
-from ex5_escolar.estudante import Estudante
-from ex5_escolar.curso import Curso
-from ex6_biblioteca.bibliotecario import Bibliotecario
-from ex6_biblioteca.livro import Livro
-from ex7_dep_func.departamento import Departamento
-from ex7_dep_func.funcionario import Funcionario
-from ex8_ecommerce.clientes import Cliente
-from ex8_ecommerce.produtos import Produto
-from ex9_filmes.categorias import Categoria
-from ex9_filmes.filmes import Filme
-
+from utils import *
 
 # ADICIONAR ENCAPSULAMENTO!
 
@@ -401,7 +385,63 @@ def main():
                         case _:
                             print("Opção inválida!")
 
-            # case 10:
+            case 10:
+                while True:
+                    print("[MENU PEDIDOS]")
+                    print("1 - Inserir cliente")
+                    print("2 - Criar pedido")
+                    print("3 - Adicionar pedido a cliente")
+                    print("4 - Exibir pedidos")
+                    print("0 - Sair")
+                    print("-" * 20)
+
+                    opcao = input("Escolha: ")
+                    print("-" * 20)
+
+                    match opcao:
+
+                        case "1":
+                            nome = input("Nome do cliente: ")
+                            cpf = input("Digite o cpf: ")
+
+                            cliente = Cliente(nome, cpf)
+                            print("Cliente registrado com sucesso")
+
+                        case "2":
+                            i = 1
+                            id = i
+                            nome = input("Digite o produto que deseja: ")
+                            quantidade = int(input(f"Quantos {nome} você deseja encomendar? "))
+
+                            pedido = Pedidos(id, nome, quantidade)
+
+                            print("Pedido criado com sucesso!")
+                            i += 1
+
+
+                        case "3":
+                            cliente.adicionar_pedidos(pedido)
+                            print("Pedido adicionado para o cliente!")
+
+                        case "4":
+                            cliente.exibir_pedidos()
+
+                        case "5": # testes
+                            cliente = Cliente("fernando","03702309063")
+
+                            pedido = Pedidos(1, "Gatorade", 2)
+
+                            cliente.adicionar_pedidos(pedido)
+                            
+
+                        case "0":
+                            print("Encerrando...")
+                            break
+
+                        case _:
+                            print("Opção inválida!")
+
+
 
             case 0:
                 print("Encerrando programa...")
