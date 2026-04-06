@@ -1,22 +1,56 @@
 class Livro:
+
     def __init__(self, titulo="Título Vazio"):
+        self.__titulo = ""
+        self.__disponivel = True
+        self.__historico = []
+
         self.titulo = titulo
-        self.disponivel = True
-        self.livros = []
-        self.historico = []  # pessoas que já pegaram
+
+    @property
+    def titulo(self):
+        """
+        Getter para retornar o título do livro
+        """
+        return self.__titulo
+
+    @titulo.setter
+    def titulo(self, valor):
+        """
+        Setter para validar o título
+        """
+        if not valor.strip():
+            raise ValueError("Título inválido!")
+        self.__titulo = valor
+
+    @property
+    def disponivel(self):
+        """
+        Getter para verificar se o livro está disponível
+        """
+        return self.__disponivel
 
     def emprestar(self, nome_usuario):
-        if self.disponivel:
-            self.disponivel = False
-            self.historico.append(nome_usuario)
+        """
+        Método para emprestar livro
+        """
+        if self.__disponivel:
+            self.__disponivel = False
+            self.__historico.append(nome_usuario)
             return True
         return False
 
     def devolver(self):
-        self.disponivel = True
+        """
+        Método para devolver livro
+        """
+        self.__disponivel = True
 
     def mostrar_info(self):
-        status = "Disponível" if self.disponivel else "Emprestado"
-        print(f"Livro: {self.titulo}")
+        """
+        Método para mostrar informações do livro
+        """
+        status = "Disponível" if self.__disponivel else "Emprestado"
+        print(f"Livro: {self.__titulo}")
         print(f"Status: {status}")
-        print(f"Histórico: {self.historico}")
+        print(f"Histórico: {self.__historico}")

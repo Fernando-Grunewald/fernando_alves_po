@@ -1,31 +1,66 @@
 class Bibliotecario:
-    def __init__(self, nome="Bibliotecario Vazio"):
+
+    def __init__(self, nome="Bibliotecário Vazio"):
+        self.__nome = ""
+        self.__livros_emprestados = []
+
         self.nome = nome
-        self.livros_emprestados = []
+
+    @property
+    def nome(self):
+        """
+        Getter para retornar o nome do bibliotecário
+        """
+        return self.__nome
+
+    @nome.setter
+    def nome(self, valor):
+        """
+        Setter para validar o nome
+        """
+        if not valor.replace(" ", "").isalpha():
+            raise ValueError("Nome inválido!")
+        self.__nome = valor
+
+    @property
+    def livros_emprestados(self):
+        """
+        Getter para retornar os livros emprestados
+        """
+        return self.__livros_emprestados
 
     def emprestar_livro(self, livro):
-        sucesso = livro.emprestar(self.nome)
+        """
+        Método para emprestar um livro
+        """
+        sucesso = livro.emprestar(self.__nome)
 
         if sucesso:
-            self.livros_emprestados.append(livro)
+            self.__livros_emprestados.append(livro)
             print("Livro emprestado com sucesso!")
         else:
             print("Livro não está disponível.")
 
     def devolver_livro(self, livro):
-        if livro in self.livros_emprestados:
+        """
+        Método para devolver um livro
+        """
+        if livro in self.__livros_emprestados:
             livro.devolver()
-            self.livros_emprestados.remove(livro)
+            self.__livros_emprestados.remove(livro)
             print("Livro devolvido!")
         else:
             print("Você não está com esse livro.")
 
     def mostrar_info(self):
-        print(f"\nBibliotecário: {self.nome}")
+        """
+        Método para mostrar informações do bibliotecário
+        """
+        print(f"\nBibliotecário: {self.__nome}")
 
-        if len(self.livros_emprestados) == 0:
+        if len(self.__livros_emprestados) == 0:
             print("Nenhum livro emprestado.")
         else:
             print("Livros emprestados:")
-            for livro in self.livros_emprestados:
+            for livro in self.__livros_emprestados:
                 print(f"- {livro.titulo}")

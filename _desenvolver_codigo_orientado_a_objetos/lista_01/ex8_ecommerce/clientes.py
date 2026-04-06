@@ -1,15 +1,35 @@
 class Cliente:
-    
+
     def __init__(self, nome="Cliente Vazio"):
+        self.__nome = ""
+
         self.nome = nome
 
-    def comprar(self, produto):
-        try:
-            quantidade = int(input(f"{self.nome}, quantos '{produto.nome}' deseja comprar? "))
+    @property
+    def nome(self):
+        """
+        Getter para retornar o nome do cliente
+        """
+        return self.__nome
 
-            if produto.reduzir_estoque(quantidade):
-                total = produto.preco * quantidade
-                print(f"Compra realizada!")
-                print(f"Total: R${total:.2f}")
-        except:
-            print("Valor inválido!")
+    @nome.setter
+    def nome(self, valor):
+        """
+        Setter para validar o nome
+        """
+        if not valor.replace(" ", "").isalpha():
+            raise ValueError("Nome inválido!")
+        self.__nome = valor
+
+    def comprar(self, produto, quantidade):
+        """
+        Método para realizar compra
+        """
+        produto.reduzir_estoque(quantidade)
+        total = produto.preco * quantidade
+
+        print("Compra realizada!")
+        print(f"Cliente: {self.__nome}")
+        print(f"Produto: {produto.nome}")
+        print(f"Quantidade: {quantidade}")
+        print(f"Total: R${total:.2f}")

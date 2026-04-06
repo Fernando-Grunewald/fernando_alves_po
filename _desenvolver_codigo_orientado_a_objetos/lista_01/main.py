@@ -38,74 +38,95 @@ def main():
 
         match exercicio_escolhido:
 
+                        
             case 1:
                 while True:
                     try:
-                        humano.humano_nome = input("Qual é seu nome? ")
-                        humano.humano_idade = int(input("Qual é sua idade? "))
+                        nome = input("Qual é seu nome? ")
+                        idade = int(input("Qual é sua idade? "))
                         print("=" * 20)
 
-                        if humano.humano_nome.isalpha() and (humano.humano_idade >=1, humano.humano_idade <= 100):
-                            humano.apresentacao_pessoal()
-                            break
+                        humano.nome = nome
+                        humano.idade = idade
+
+                        humano.apresentacao_pessoal()
+                        break
 
                     except ValueError as e:
-                        print(f"Entrada de dados inválida. Erro = ", e)
+                        print("Erro:", e)
 
             case 2:
                 while True:
                     try:
-                        cachorrinho.dog_name = input("Digite um nome de cachorro: ")
-                        cachorrinho.dog_race = input("Digite uma raça de cachorro: ")
-                        gatinho.cat_name = input("Digite um nome de gato: ")
-                        gatinho.cat_color = input("Digite uma cor de gato: ")
+                        cachorrinho.nome = input("Digite um nome de cachorro: ")
+                        cachorrinho.raca = input("Digite uma raça de cachorro: ")
+
+                        gatinho.nome = input("Digite um nome de gato: ")
+                        gatinho.cor = input("Digite uma cor de gato: ")
+
                         print("=" * 20)
-                        continue
+
+                        cachorrinho.latir()
+                        gatinho.miar()
+
+                        break
 
                     except ValueError as e:
-                        print(f"Entrada de dados inválida. Erro = ", e)
-
-                    finally:
-                        cachorrinho.dog_bark()
-                        gatinho.cat_meow()
-                        break
+                        print("Entrada de dados inválida. Erro =", e)
             
             case 3:
-                carro.atualizar_placa(nova_placa = input("Digite uma nova placa para seu carro: "))
-                print("=" * 20)
-                carro.atualizar_quilometragem(nova_quilometragem = int(input("Quantos KM seu carro andou hoje? ")))
+                while True:
+                    try:
+                        carro.atualizar_placa(
+                            nova_placa=input("Digite uma nova placa para seu carro: ")
+                        )
+
+                        print("=" * 20)
+
+                        carro.atualizar_quilometragem(
+                            nova_quilometragem=int(input("Quantos KM seu carro andou hoje? "))
+                        )
+
+                        break
+
+                    except ValueError as e:
+                        print("Entrada inválida:", e)
                 
             case 4:
                 while True:
-                    print("[MENU BANCÁRIO]")
-                    print("1 - Depositar")
-                    print("2 - Sacar")
-                    print("3 - Ver conta")
-                    print("0 - Sair")
+                    try:
+                        print("[MENU BANCÁRIO]")
+                        print("1 - Depositar")
+                        print("2 - Sacar")
+                        print("3 - Ver conta")
+                        print("0 - Sair")
 
-                    opcao = input("Escolha: ")
+                        opcao = input("Escolha: ")
 
-                    match opcao:
-                        case "1":
-                            valor = float(input("Valor: "))
-                            banco.depositar(banco, valor)
+                        match opcao:
+                            case "1":
+                                valor = float(input("Valor: "))
+                                banco.depositar(titular, valor)
 
-                        case "2":
-                            valor = float(input("Valor: "))
-                            banco.sacar(titular, valor)
+                            case "2":
+                                valor = float(input("Valor: "))
+                                banco.sacar(titular, valor)
 
-                        case "3":
-                            banco.mostrar_info(titular)
+                            case "3":
+                                banco.mostrar_info(titular)
 
-                        case "0":
-                            break
+                            case "0":
+                                break
 
-                        case _:
-                            print("Opção inválida.")
+                            case _:
+                                print("Opção inválida.")
+
+                    except ValueError as e:
+                        print("Erro:", e)
 
             case 5:
-
                 while True:
+                    try:
                         print("\n [MENU ESCOLAR]")
                         print("1 - Adicionar estudante")
                         print("2 - Adicionar nota")
@@ -132,258 +153,310 @@ def main():
 
                                 print("\nEscolha o estudante:")
                                 for i, est in enumerate(curso.estudantes):
-                                    print(f"{i} - {est.nome}")
+                                    print(f"{i+1} - {est.nome}")
 
                                 indice = int(input("Número: "))
                                 nota = float(input("Nota: "))
 
-                                curso.estudantes[indice].adicionar_nota(nota)
+                                curso.estudantes[indice-1].adicionar_nota(nota)
                                 print("Nota adicionada!")
 
                             case "3":
                                 curso.listar_estudantes()
-                            
-                            case 0:
+
+                            case "0":
                                 print("Encerrando programa...")
                                 break
-            
+
                             case _:
                                 print(f"A opção {opcao} é inválida!")
 
-            case 6: 
+                    except ValueError as e:
+                        print("Erro:", e)
+                    except IndexError:
+                        print("Índice inválido!")
+
+            case 6:
                 
+                nome_bibliotecario = input("Digite o nome do bibliotecário: ")
+                bibliotecario = Bibliotecario(nome_bibliotecario)
+
+                livros = []
+
                 while True:
-                    print("[MENU BIBLIOTECÁRIO]")
-                    print("1 - Adicionar livro")
-                    print("2 - Emprestar livro")
-                    print("3 - Devolver livro")
-                    print("4 - Listar livros")
-                    print("5 - Ver bibliotecário")
-                    print("0 - Sair")
-                    livros = []
-                    
-                    opcao = input("Escolha: ")
+                    try:
+                        print("\n[MENU BIBLIOTECÁRIO]")
+                        print("1 - Adicionar livro")
+                        print("2 - Emprestar livro")
+                        print("3 - Devolver livro")
+                        print("4 - Listar livros")
+                        print("5 - Ver bibliotecário")
+                        print("6 - Trocar bibliotecário")
+                        print("0 - Sair")
 
-                    match opcao:
-                        case "1":
-                            
-                            livros = input("Título do livro: ")
-                            livros = Livro(livro)
-                            livros.append(livro)
-                            print("Livro adicionado!")
+                        opcao = input("Escolha: ")
 
-                        case "2":
-                            if len(livros) == 0:
-                                print("Nenhum livro cadastrado.")
-                                continue
+                        match opcao:
+                            case "1":
+                                titulo = input("Título do livro: ")
+                                livro = Livro(titulo)
+                                livros.append(livro)
+                                print("Livro adicionado!")
 
-                            for i, livro in enumerate(livros):
-                                print(f"{i} - {livro.titulo}")
+                            case "2":
+                                if len(livros) == 0:
+                                    print("Nenhum livro cadastrado.")
+                                    continue
 
-                            indice = int(input("Escolha o livro: "))
-                            bibliotecario.emprestar_livro(livros[indice])
+                                for i, livro in enumerate(livros):
+                                    print(f"{i} - {livro.titulo}")
 
-                        case "3":
-                            if len(bibliotecario.livros_emprestados) == 0:
-                                print("Nenhum livro para devolver.")
-                                continue
+                                indice = int(input("Escolha o livro: "))
+                                bibliotecario.emprestar_livro(livros[indice])
 
-                            for i, livro in enumerate(bibliotecario.livros_emprestados):
-                                print(f"{i} - {livro.titulo}")
+                            case "3":
+                                if len(bibliotecario.livros_emprestados) == 0:
+                                    print("Nenhum livro para devolver.")
+                                    continue
 
-                            indice = int(input("Escolha o livro: "))
-                            bibliotecario.devolver_livro(bibliotecario.livros_emprestados[indice])
+                                for i, livro in enumerate(bibliotecario.livros_emprestados):
+                                    print(f"{i} - {livro.titulo}")
 
-                        case "4":
-                            if len(livros) == 0:
-                                print("Nenhum livro cadastrado.")
-                            else:
-                                for livro in livros:
-                                    livro.mostrar_info()
-                                    print("-" * 20)
+                                indice = int(input("Escolha o livro: "))
+                                bibliotecario.devolver_livro(
+                                    bibliotecario.livros_emprestados[indice]
+                                )
 
-                        case "5":
-                            bibliotecario.mostrar_info()
+                            case "4":
+                                if len(livros) == 0:
+                                    print("Nenhum livro cadastrado.")
+                                else:
+                                    for livro in livros:
+                                        livro.mostrar_info()
+                                        print("-" * 20)
+
+                            case "5":
+                                bibliotecario.mostrar_info()
+
+                            case "6":
+                                novo_nome = input("Novo nome do bibliotecário: ")
+                                bibliotecario.nome = novo_nome
+                                print("Bibliotecário atualizado!")
+
+                            case "0":
+                                print("Saindo...")
+                                break
+
+                            case _:
+                                print("Opção inválida.")
+
+                    except ValueError as e:
+                        print("Erro:", e)
+                    except IndexError:
+                        print("Índice inválido!")
 
             case 7:
-
                 while True:
-                    print("[MENU FUNCIONÁRIOS]")
-                    print("1 - Adicionar funcionário")
-                    print("2 - Editar salário")
-                    print("3 - Listar funcionários")
-                    print("0 - Sair")
-                    print("-" * 20)
+                    try:
+                        print("[MENU FUNCIONÁRIOS]")
+                        print("1 - Adicionar funcionário")
+                        print("2 - Editar salário")
+                        print("3 - Listar funcionários")
+                        print("0 - Sair")
+                        print("-" * 20)
 
-                    opcao = input("Escolha: ")
+                        opcao = input("Escolha: ")
 
-                    match opcao:
-                        case "1":
-                            nome = input("Nome: ")
-                            cpf = input("CPF: ")
-                            telefone = input("Telefone: ")
+                        match opcao:
+                            case "1":
+                                nome = input("Nome: ")
+                                cpf = input("CPF: ")
+                                telefone = input("Telefone: ")
 
-                            novo = Funcionario(nome, cpf, telefone)
-                            departamento.adicionar_funcionario(novo)
+                                novo = Funcionario(nome, cpf, telefone)
+                                departamento.adicionar_funcionario(novo)
 
-                        case "2":
-                            nome = input("Digite o nome do funcionário: ")
-                            
-                            for func in departamento.funcionarios:
-                                if func.nome == nome:
-                                    func.editar_salario()
-                                    break
-                            else:
-                                print("Funcionário não encontrado.")
+                                print("Funcionário adicionado!")
 
-                        case "3":
-                            departamento.listar_funcionarios()
+                            case "2":
+                                if len(departamento.funcionarios) == 0:
+                                    print("Nenhum funcionário cadastrado.")
+                                    continue
 
-                        case "0":
-                            print("Encerrando...")
-                            break
+                                nome = input("Digite o nome do funcionário: ")
 
-                        case _:
-                            print("Opção inválida!")
+                                for func in departamento.funcionarios:
+                                    if func.nome == nome:
+                                        novo_salario = float(input("Novo salário: "))
+                                        func.editar_salario(novo_salario)
+                                        break
+                                else:
+                                    print("Funcionário não encontrado.")
+
+                            case "3":
+                                departamento.listar_funcionarios()
+
+                            case "0":
+                                print("Encerrando...")
+                                break
+
+                            case _:
+                                print("Opção inválida!")
+
+                    except ValueError as e:
+                        print("Erro:", e)
 
             case 8:
-
                 produtos = []
 
                 while True:
-                    print("[MENU PRODUTOS]")
-                    print("1 - Cadastrar produto")
-                    print("2 - Atualizar estoque")
-                    print("3 - Mostrar produtos")
-                    print("4 - Comprar produto")
-                    print("0 - Sair")
-                    print("-" * 20)
+                    try:
+                        print("[MENU PRODUTOS]")
+                        print("1 - Cadastrar produto")
+                        print("2 - Atualizar estoque")
+                        print("3 - Mostrar produtos")
+                        print("4 - Comprar produto")
+                        print("0 - Sair")
+                        print("-" * 20)
 
-                    opcao = input("Escolha: ")
+                        opcao = input("Escolha: ")
 
-                    match opcao:
+                        match opcao:
 
-                        case "1":
-                            nome = input("Nome do produto: ")
-
-                            try:
+                            case "1":
+                                nome = input("Nome do produto: ")
                                 preco = float(input("Preço: "))
                                 estoque = int(input("Estoque inicial: "))
-                            except:
-                                print("Um dos valores é inválido!")
-                                continue
 
-                            novo = Produto(nome, preco, estoque)
-                            produtos.append(novo)
+                                novo = Produto(nome, preco, estoque)
+                                produtos.append(novo)
 
-                        case "2":
-                            nome = input("Nome do produto: ")
+                                print("Produto cadastrado!")
 
-                            for p in produtos:
-                                if p.nome == nome:
-                                    p.atualizar_estoque()
-                                    break
-                            else:
-                                print("Produto não encontrado.")
+                            case "2":
+                                if not produtos:
+                                    print("Nenhum produto cadastrado.")
+                                    continue
 
-                        case "3":
-                            if not produtos:
-                                print("Nenhum produto cadastrado.")
-                            else:
-                                for p in produtos:
-                                    p.mostrar_produto()
-                                    print("-" * 20)
+                                for i, p in enumerate(produtos):
+                                    print(f"{i} - {p.nome}")
 
-                        case "4":
-                            nome_cliente = input("Nome do cliente: ")
-                            cliente = Cliente(nome_cliente)
+                                indice = int(input("Escolha o produto: "))
+                                quantidade = int(input("Quantidade a adicionar: "))
 
-                            nome_produto = input("Produto desejado: ")
+                                produtos[indice].adicionar_estoque(quantidade)
 
-                            for p in produtos:
-                                if p.nome == nome_produto:
-                                    cliente.comprar(p)
-                                    break
-                            else:
-                                print("Produto não encontrado.")
+                            case "3":
+                                if not produtos:
+                                    print("Nenhum produto cadastrado.")
+                                else:
+                                    for p in produtos:
+                                        print(f"Nome: {p.nome}")
+                                        print(f"Preço: R${p.preco:.2f}")
+                                        print(f"Estoque: {p.estoque}")
+                                        print("-" * 20)
 
-                        case "0":
-                            print("Encerrando...")
-                            break
+                            case "4":
+                                if not produtos:
+                                    print("Nenhum produto cadastrado.")
+                                    continue
 
-                        case _:
-                            print("Opção inválida!")
+                                nome_cliente = input("Nome do cliente: ")
+                                cliente = Cliente(nome_cliente)
+
+                                for i, p in enumerate(produtos):
+                                    print(f"{i} - {p.nome}")
+
+                                indice = int(input("Escolha o produto: "))
+                                quantidade = int(input("Quantidade: "))
+
+                                cliente.comprar(produtos[indice], quantidade)
+
+                            case "0":
+                                print("Encerrando...")
+                                break
+
+                            case _:
+                                print("Opção inválida!")
+
+                    except ValueError as e:
+                        print("Erro:", e)
+                    except IndexError:
+                        print("Índice inválido!")
 
             case 9:
 
                 categorias = []
 
                 while True:
-                    print("[MENU CINÉFILO]")
-                    print("1 - Criar categoria")
-                    print("2 - Adicionar filme em categoria")
-                    print("3 - Listar categorias")
-                    print("4 - Listar filmes de uma categoria")
-                    print("0 - Sair")
-                    print("-" * 20)
+                    try:
+                        print("[MENU CINÉFILO]")
+                        print("1 - Criar categoria")
+                        print("2 - Adicionar filme em categoria")
+                        print("3 - Listar categorias")
+                        print("4 - Listar filmes de uma categoria")
+                        print("0 - Sair")
+                        print("-" * 20)
 
-                    opcao = input("Escolha: ")
-                    print("-" * 20)
+                        opcao = input("Escolha: ")
+                        print("-" * 20)
 
-                    match opcao:
+                        match opcao:
 
-                        case "1":
-                            nome = input("Nome da categoria: ")
-                            nova = Categoria(nome)
-                            categorias.append(nova)
-                            print("Categoria criada!")
+                            case "1":
+                                nome = input("Nome da categoria: ")
+                                nova = Categoria(nome)
+                                categorias.append(nova)
+                                print("Categoria criada!")
 
-                        case "2":
-                            nome_categoria = input("Categoria: ")
+                            case "2":
+                                if not categorias:
+                                    print("Nenhuma categoria cadastrada.")
+                                    continue
 
-                            for cat in categorias:
-                                if cat.nome == nome_categoria:
+                                for i, cat in enumerate(categorias):
+                                    print(f"{i} - {cat.nome}")
 
-                                    titulo = input("Título: ")
-                                    diretor = input("Diretor: ")
+                                indice = int(input("Escolha a categoria: "))
 
-                                    try:
-                                        ano = int(input("Ano: "))
-                                    except:
-                                        print("Ano inválido!")
-                                        break
-                                    
-                                    filme = Filme(titulo, diretor, ano)
-                                    cat.adicionar_filme(filme)
-                                    break
-                            else:
-                                print("Categoria não encontrada.")
+                                titulo = input("Título: ")
+                                diretor = input("Diretor: ")
+                                ano = int(input("Ano: "))
 
-                        case "3":
-                            if not categorias:
-                                print("Nenhuma categoria cadastrada.")
-                            else:
-                                print("Categorias:")
-                                for cat in categorias:
-                                    print(f"- {cat.nome}")
-                                print("-" * 20)
+                                filme = Filme(titulo, diretor, ano)
+                                categorias[indice].adicionar_filme(filme)
 
-                        case "4":
-                            nome_categoria = input("Categoria: ")
+                            case "3":
+                                if not categorias:
+                                    print("Nenhuma categoria cadastrada.")
+                                else:
+                                    print("Categorias:")
+                                    for i, cat in enumerate(categorias):
+                                        print(f"{i} - {cat.nome}")
+                                    print("-" * 20)
 
-                            for cat in categorias:
-                                if cat.nome == nome_categoria:
-                                    cat.listar_filmes()
-                                    break
-                            else:
-                                print("Categoria não encontrada.")
+                            case "4":
+                                if not categorias:
+                                    print("Nenhuma categoria cadastrada.")
+                                    continue
 
-                        case "0":
-                            print("Encerrando...")
-                            break
+                                for i, cat in enumerate(categorias):
+                                    print(f"{i} - {cat.nome}")
 
-                        case _:
-                            print("Opção inválida!")
+                                indice = int(input("Escolha a categoria: "))
+                                categorias[indice].listar_filmes()
+
+                            case "0":
+                                print("Encerrando...")
+                                break
+
+                            case _:
+                                print("Opção inválida!")
+
+                    except ValueError as e:
+                        print("Erro:", e)
+                    except IndexError:
+                        print("Índice inválido!")
 
             case 10:
                 while True:
