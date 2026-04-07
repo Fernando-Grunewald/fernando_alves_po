@@ -1,7 +1,7 @@
 from utils import *
 
 
-def main():
+def lista_1():
 
     humano = Pessoa()
     cachorrinho = Cachorro()
@@ -523,7 +523,7 @@ def main():
                 print(f"A opção {exercicio_escolhido} é inválida!")
 
 if __name__ == "__main__":
-    main()
+    lista_1()
 
 # Exercício 1 
 # Crie um módulo com uma classe que represente uma pessoa.

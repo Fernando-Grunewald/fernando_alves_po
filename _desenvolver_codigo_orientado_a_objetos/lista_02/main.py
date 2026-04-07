@@ -1,3 +1,36 @@
+from utils import *
+from imports import *
+
+def lista_2():
+   print("-" * 15)
+   while True:
+
+        print("Lista de Exercícios 2\n")
+        print("[1] - Exercício 1.")
+        print("[2] - Exercício 2.")
+        print("[3] - Exercício 3.")
+        print("[0] - Sair")
+        print("-" * 15)
+
+        opcao = int(input("Escolha uma opção: "))
+        print("-" * 15)
+
+        match opcao:
+             case 1:
+                exercicio_1()
+             case 2:
+                exercicio_2()
+             case 3:
+                exercicio_3()
+             case 0:
+                print("Encerrando script. Até mais...")
+                break
+             case _:
+                print(f" A opção {opcao} é inválida. Tente novamente.")
+                
+if __name__ == "__main__":
+    lista_2()
+
 # Para cada exercício, crie um módulo correspondente contendo as classes e métodos
 # solicitados. 
 # Organize os módulos em um pacote Encapsulamento, criando uma estrutura de 
