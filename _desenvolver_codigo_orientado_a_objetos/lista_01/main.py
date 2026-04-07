@@ -1,6 +1,5 @@
 from utils import *
 
-# ADICIONAR ENCAPSULAMENTO!
 
 def main():
 
@@ -26,8 +25,8 @@ def main():
         print(" [2] - Módulo de gato e cachorro.")
         print(" [3] - Atualizar seu carro.")
         print(" [4] - Sistema Bancário.")
-        print(" [5] - Gerenciar estudantes.") # ARRUMAR E POLIR
-        print(" [6] - Gerenciar livros.") # Ajeitar tudo
+        print(" [5] - Gerenciar estudantes.")
+        print(" [6] - Gerenciar livros.")
         print(" [7] - Departamento de Funcionários.")
         print(" [8] - Mercado Online.")
         print(" [9] - Filmes e Categorias.")
