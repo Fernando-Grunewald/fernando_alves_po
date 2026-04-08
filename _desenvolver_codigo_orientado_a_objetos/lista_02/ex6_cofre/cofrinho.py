@@ -59,8 +59,4 @@ def exercicio_6():
                 break
             
             case _:
-                
-                
-
-
-
+                print("Opção inválida, tente novamente...")
