@@ -9,6 +9,7 @@ def lista_2():
         print("[1] - Exercício 1.")
         print("[2] - Exercício 2.")
         print("[3] - Exercício 3.")
+        print("[5] - Exercício 5.")
         print("[0] - Sair")
         print("-" * 15)
 
@@ -22,6 +23,8 @@ def lista_2():
                 exercicio_2()
              case 3:
                 exercicio_3()
+             case 5:
+                exercicio_5()
              case 0:
                 print("Encerrando script. Até mais...")
                 break

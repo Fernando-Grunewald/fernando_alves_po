@@ -32,7 +32,10 @@ class ContaBancaria:
 
     def sacar(self, saque: int):
         if saque >= 1 and self.saldo >= 1:
-            print("")
+            self.saldo =- saque
+            print(f"Saque de {saque} realizado com sucesso.")
+        else:
+            print("Não há saldo suficiente para o saque."
         
 
     

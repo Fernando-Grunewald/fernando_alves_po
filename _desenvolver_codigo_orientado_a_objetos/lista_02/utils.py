@@ -1,1 +1,2 @@
 from ex1_2_3_aluno.aluno import Aluno
+from ex5_funcionario.funcionario import Funcionario
