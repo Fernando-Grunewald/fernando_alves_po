@@ -55,7 +55,7 @@ class Registro:
 class Funcionario(Pessoa, Registro): 
     def __init__(self, nome, idade, cargo): 
         Pessoa.__init__(self, nome, idade) 
-        Registro.__init__(self) 
+        Registro.__init__(self) # Self apenas para pegar os métodos.
         self._cargo = cargo               
         self.__salario = 0               
  

@@ -7,5 +7,5 @@ class Administrador(Usuario):
         print("Verificando permissões...") 
         super().login() 
  
-adm = Administrador() 
+adm = Administrador()
 adm.login() 
