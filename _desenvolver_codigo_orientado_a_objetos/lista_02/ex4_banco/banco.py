@@ -20,24 +20,67 @@ class ContaBancaria:
     @saldo.setter
     def saldo(self, novo_deposito: int):
         """Método Setter pra depositar o saldo (acho)"""
-        if novo_deposito >= 1 and novo_deposito is int:
+        if novo_deposito >= 1:
             self.__saldo += novo_deposito
             print("Depósito realizado com sucesso!")
         else:
             print("O depósito precisa ser positivo e um número inteiro.")
 
-    @saldo.setter 
-    def saldo(self, saque: int):
-        """Método Setter"""
-
     def sacar(self, saque: int):
-        if saque >= 1 and self.saldo >= 1:
-            self.saldo =- saque
+        """Método para poder sacar o dinheir se a variável for maior que 1"""
+        if saque >= 1 and saque <= self.saldo and self.saldo >= 1:
+            self.__saldo -= saque
             print(f"Saque de {saque} realizado com sucesso.")
         else:
-            print("Não há saldo suficiente para o saque."
+            print("Não há saldo suficiente para o saque.")
+            
+    def exibir_saldo(self):
+        """Método para eu poder exibir o saldo"""
+        print("Saldo atual: R$", self.__saldo)
         
+#=============================================================================
 
+def exercicio_4():
+    conta1 = ContaBancaria("Fernando", 0)
+
+    while True:
+        print("-" * 13)
+        print("[Exercício 4]")
+        print("-" * 13)
+        print("1 = Adicionar depósito.")
+        print("2 = Realizar saque.")
+        print("3 = Exibir informações")
+        print("0 = Sair.")
+        print("-" * 15)
+        escolha = int(input("Escolha uma opção: "))
+        print("-" * 15)
+
+        match escolha:
+            case 1:
+                deposito = int(input("Digite o valor do depósito: R$"))
+                conta1.saldo = deposito
+                
+            case 2:
+                sacar = int(input("Quanto deseja sacar hoje? R$"))
+                conta1.sacar(sacar)
+                
+            case 3:
+                print("Titular do cartão: ", conta1.titular)
+                conta1.exibir_saldo()
+            
+            case 0:
+                print("Até mais...")
+                break
+            
+            case _:
+                print("Opção inválida, tente novamente...")
+
+
+
+                    
+                    
+                
+    
     
 
         

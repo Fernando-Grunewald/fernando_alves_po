@@ -27,9 +27,9 @@ class Cofre:
             print("O antigo foi enviado para o histórico...")
     
     def mostrar_historico(self):
-        print(self._historico)
+        print("Histórico de segredos: ",self._historico)
 
-    
+#===========================================================================================
 
 def exercicio_6():
 
