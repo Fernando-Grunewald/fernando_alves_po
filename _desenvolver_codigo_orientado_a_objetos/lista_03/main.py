@@ -2,7 +2,7 @@ from utils import *
 from imports import *
 
 def lista_3():
-   print("-" * 15)
+   print("-" * 20)
    while True:
 
         print("Lista de Exercícios 3\n")
@@ -13,16 +13,24 @@ def lista_3():
         print("[5] - Exercício 5.")
         print("[6] - Exercício 6.")
         print("[0] - Sair")
-        print("-" * 15)
+        print("-" * 20)
 
         opcao = int(input("Escolha uma opção: "))
-        print("-" * 15)
+        print("-" * 20)
 
         match opcao:
             case 1:
                 exercicio_01()
             case 2:
                 exercicio_02()
+            case 3:
+                exercicio_03()
+            case 4:
+                exercicio_04()
+            case 5:
+                exercicio_05()
+            case 6:
+                menu_interativo()
             case 0:
                 print("Encerrando script. Até mais...")
                 break
