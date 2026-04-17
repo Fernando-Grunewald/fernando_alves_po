@@ -14,10 +14,12 @@ class Cofre:
 
     @property
     def alterar_segredo(self):
+        """Método do Getter pra obter o segredo"""
         return self.__segredo
 
     @alterar_segredo.setter
     def alterar_segredo(self, novo_segredo: str):
+        """Método do Setter pra podermos alterar a variável do segredo e adicionar ao histórico"""
         if novo_segredo == self.__segredo:
             print("O segredo não foi alterado, pois são iguais.")
         else:
