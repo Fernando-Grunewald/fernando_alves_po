@@ -1,14 +1,19 @@
-from imports_utils import *
+from exercicio1.cliente import Cliente
 
 class ClienteVip(Cliente):
     def __init__(self, nome, email, senha, cpf, saldo, desconto):
         super().__init__(nome, email, senha, cpf, saldo)
         self.desconto = desconto
 
+    @classmethod
+    def criar(cls):
+        print("[Criando Cliente VIP]")
+        return super().criar()
+
     def comprar(self, valor):
         """Método para aplicar desconto as compras"""
-        desconto = valor * 0.10
-        valor_final = valor - desconto
+        valor_descontado = valor * self.desconto
+        valor_final = valor - valor_descontado
 
         if self.saldo >= valor_final:
             self.saldo -= valor_final

@@ -1,4 +1,3 @@
-from utils import *
 from imports import *
 
 def lista_4():
@@ -14,17 +13,16 @@ def lista_4():
         print("-" * 20)
 
         opcao = int(input("Escolha uma opção: "))
-        print("-" * 20)
 
         match opcao:
             case 1:
                 exercicio_01()
-            case 2:
-                exercicio_02()
-            case 3:
-                exercicio_03()
-            case 4:
-                exercicio_04()
+            # case 2:
+            #     exercicio_02()
+            # case 3:
+            #     exercicio_03()
+            # case 4:
+            #     exercicio_04()
             case 0:
                 print("Encerrando script. Até mais...")
                 break
