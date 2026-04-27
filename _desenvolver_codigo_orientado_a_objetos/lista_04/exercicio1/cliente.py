@@ -4,13 +4,13 @@ class Cliente(Usuario):
     def __init__(self, nome, email, senha, cpf, saldo):
         """Hierarquia simples. Cliente faz parte da classe usuário, recebendo atributos dele e seus métodos."""
         super().__init__(nome, email, senha, cpf) # Em uma hierarquia simples, o super serve para defubur o que a classe recebe especificamente de atributos de outra.
-        self._saldo = saldo
+        self.saldo = saldo
         self.clientes = []
-
 
     @classmethod
     def criar(cls):
-        nome = input("Nome: ")
+        """Método de classe pra criar um cliente"""
+        nome = input("\nNome: ")
         email = input("Email: ")
         senha = input("Senha: ")
         cpf = input("CPF: ")
@@ -19,7 +19,7 @@ class Cliente(Usuario):
 
     def adicionar_cliente(self, cliente):
         self.clientes.append(cliente)
-        print(f"Cliente '{cliente.nome}' foi vincúlado ao sistema!")
+        print(f"Cliente '{cliente.nome}' foi adicionado à lista de clientes!")
 
     def exibir_detalhes(self):
         if len(self.clientes) != 0 :
@@ -36,7 +36,7 @@ class Cliente(Usuario):
         if not self.clientes:
             print(f"Não foi possível encontrar o cliente '{self.__nome}'.")
             return
-        
+        print("=" * 20)
         print(f"Clientes Normais.")
         print("-" * 20)
         for cliente in self.clientes:
@@ -47,7 +47,7 @@ class Cliente(Usuario):
         """Método pra subtrair o saldo"""
         if self.saldo >= valor:
             self.saldo -= valor 
-            print("[Cliente", self.nome,"] - comprou R${valor:.2f}. Seu saldo restante é R${self.saldo:.2f}", sep=" ")
+            print(f"[Cliente", self.nome,"] - comprou R${self.valor}. Seu saldo restante é R${self.saldo}", sep=" ") # NÃO ESTÁ MOSTRANDO OS VALORES
         else:
             print("[Cliente", self.nome,"] - não tem saldo suficiente.")
 

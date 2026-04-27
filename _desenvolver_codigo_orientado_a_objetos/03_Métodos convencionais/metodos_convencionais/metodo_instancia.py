@@ -12,3 +12,5 @@ def executar_metodo_instancia():
     usuario.enviar_email_boas_vindas()
 
     input("\nPressione Enter para voltar ao menu...")
+
+executar_metodo_instancia()
