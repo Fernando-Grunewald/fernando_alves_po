@@ -1,7 +1,6 @@
 from exercicio1.utils import *
 import time
 
-
 def exercicio_01():
     print("-" * 20)
 
@@ -18,6 +17,7 @@ def exercicio_01():
         print("[4] = Criar Cliente.")
         print("[5] = Compras")
         print("[6] = Compras Vip.")
+        print("[7] = Logoff.")
         print("[0] Sair")
 
         opcao = int(input("\n Escolha: "))
@@ -39,14 +39,14 @@ def exercicio_01():
                 print("\n[ Clientes Normais ]")
                 if clientes:
                     for c in clientes:
-                        print(c.nome, c.email, c.saldo, sep=" - ")
+                        print(c.nome, c.email, "R$", c.saldo, sep=" ")
                 else:
                     print("Nenhum cliente.")
 
                 print("\n[ Clientes VIP ]")
                 if clientes_vips:
                     for v in clientes_vips:
-                        print(v.nome, "-", v.email)
+                        print(v.nome, v.email, "R$", v.saldo, sep=" ")
                 else:
                     print("Nenhum cliente VIP.")
 
@@ -63,14 +63,35 @@ def exercicio_01():
             case 5:
                 if cliente_atual != "":
                     print(f"Bem vindo(a) {nome}, o que deseja comprar hoje? ")
-                    valor = int(input("Digite quanto deseja gastar: R$"))
-                    cliente.comprar(valor)
+                    cliente.comprar_itens()
 
                 else:
                     print("\nVocê não está logado!")
                     time.sleep(2)
                     print("Voltando para o menu principal...")
-                    time.sleep(3)
+                    time.sleep(2)
+
+            case 6:
+                if cliente_atual != "" and cliente_atual in clientes_vips:
+                    cliente_vip.acesso_exclusivo()
+                    print("=" * 18)
+                    print(f"Bem vindo(a) {nome}, o que deseja comprar hoje? ")
+                    cliente_vip.comprar_itens_vip()
+                    # valor = int(input("Digite quanto deseja gastar: R$"))
+                    # print("=" * 18)
+                    # cliente_vip.comprar_vip()
+            
+                else:
+                    print("\nVocê não está logado ou não está na lista vip!")
+                    time.sleep(2)
+                    print("Voltando para o menu principal...")
+                    time.sleep(2)
+
+            case 7:
+                print("Deslogando do sistema...")
+                time.sleep(1) 
+                print(f" \nVolte em breve {cliente_atual}!")
+                cliente_atual = ""
 
             case 0:
                 print("Encerrando script. Até mais...")

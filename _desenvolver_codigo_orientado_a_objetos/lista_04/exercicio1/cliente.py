@@ -43,13 +43,63 @@ class Cliente(Usuario):
             cliente.exibir_detalhes()
             print("-" * 20)
 
-    def comprar(self, valor):
-        """Método pra subtrair o saldo"""
-        if self.saldo >= valor:
-            self.saldo -= valor 
-            print(f"[Cliente", self.nome,"] - comprou R${self.valor}. Seu saldo restante é R${self.saldo}", sep=" ") # NÃO ESTÁ MOSTRANDO OS VALORES
-        else:
-            print("[Cliente", self.nome,"] - não tem saldo suficiente.")
+    def comprar_itens(self): # Posso tentar fazer isso no cliente vip com super. mas vai ficar confuso ;_;
+        """Método para comprar itens dos clientes"""
+        valor = 0
+        carrinho = []
+
+        while True:
+            print("CARRINHO ATUAL =", carrinho)
+
+            print("\n[ ITENS ]")
+            print("[1] Pulseira Pista Full - R$65")
+            print("[2] Drink Doce - R$32")
+
+            print("[0] Finalizar compra")
+
+            try:
+                opcao = int(input("\nQual deseja comprar? "))
+            except ValueError:
+                print("Entrada inválida.")
+                continue
+            
+            match opcao:
+
+                case 1:
+                    valor += 65
+                    carrinho.append("Pulseira Pista Full")
+
+                case 2:
+                    valor += 32
+                    carrinho.append("Drink Doce")
+
+                case 0:
+                    break
+
+                case _:
+                    print("Opção inválida.")
+
+            if not carrinho:
+                print("Nenhum item selecionado.")
+                return
+            print("\nResumo da compra:")
+            print("\nItens:", carrinho)
+
+            if self.saldo >= valor:
+                self.saldo -= valor
+                print(f"[Cliente] {self.nome} comprou com sucesso!")
+                print(f"Saldo restante: R${self.saldo:.2f}")
+                print("=" * 18)
+            else:
+                print(f"[Cliente] {self.nome} não tem saldo suficiente.")
+                print("=" * 18)
+
+    # def comprar(self, valor):
+    #     if self.saldo >= valor:
+    #         self.saldo -= valor
+    #         print(f"[Cliente {self.nome}] comprou R${valor:.2f}. Saldo restante: R${self.saldo:.2f}.")
+    #     else:
+    #         print(f"[Cliente {self.nome}] não tem saldo suficiente.")
 
     
 
