@@ -17,31 +17,31 @@ class Cliente(Usuario):
         saldo = float(input("Saldo inicial: "))
         return cls(nome, email, senha, cpf, saldo)
 
-    def adicionar_cliente(self, cliente):
-        self.clientes.append(cliente)
-        print(f"Cliente '{cliente.nome}' foi adicionado à lista de clientes!")
+    # def adicionar_cliente(self, cliente):
+    #     self.clientes.append(cliente)
+    #     print(f"Cliente '{cliente.nome}' foi adicionado à lista de clientes!")
 
-    def exibir_detalhes(self):
-        if len(self.clientes) != 0 :
-            for self.cliente in self.clientes:
-                print(f"Nome: {self.nome}. ")
-                print(f"Email: {self.email}.")
-                print(f"Senha: {self.senha}.")
-                print(f"Cpf: {self.cpf}.")
+    # def exibir_detalhes(self):
+    #     if len(self.clientes) != 0 :
+    #         for self.cliente in self.clientes:
+    #             print(f"Nome: {self.nome}. ")
+    #             print(f"Email: {self.email}.")
+    #             print(f"Senha: {self.senha}.")
+    #             print(f"Cpf: {self.cpf}.")
                 
-        else:
-            print("Não existem clientes!")
+    #     else:
+    #         print("Não existem clientes!")
 
-    def listar_clientes(self):
-        if not self.clientes:
-            print(f"Não foi possível encontrar o cliente '{self.__nome}'.")
-            return
-        print("=" * 20)
-        print(f"Clientes Normais.")
-        print("-" * 20)
-        for cliente in self.clientes:
-            cliente.exibir_detalhes()
-            print("-" * 20)
+    # def listar_clientes(self):
+    #     if not self.clientes:
+    #         print(f"Não foi possível encontrar o cliente '{self.__nome}'.")
+    #         return
+    #     print("=" * 20)
+    #     print(f"Clientes Normais.")
+    #     print("-" * 20)
+    #     for cliente in self.clientes:
+    #         cliente.exibir_detalhes()
+    #         print("-" * 20)
 
     def comprar_itens(self): # Posso tentar fazer isso no cliente vip com super. mas vai ficar confuso ;_;
         """Método para comprar itens dos clientes"""

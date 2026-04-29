@@ -1,0 +1,2 @@
+class Notificacao:
+    def

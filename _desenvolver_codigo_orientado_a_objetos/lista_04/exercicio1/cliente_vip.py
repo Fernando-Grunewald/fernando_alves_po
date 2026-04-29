@@ -34,11 +34,12 @@ class ClienteVip(Cliente):
         print(f"[Cliente Vip] {self.nome} acessou conteúdo exclusivo VIP. Suas compras terão {self.desconto} de desconto")
 
     def adicionar_cliente_vip(self, cliente_vip):
+        """Método para adicionar clientes à lista vip"""
         self.clientes_vips.append(cliente_vip)
         print(f"'{cliente_vip.nome}' foi adicionado à lista de clientes vips! Seja bem vindo...")
 
     def comprar_itens_vip(self):
-        """Método para comprar itens dos clientes vips, junto das suas regalias"""
+        """Método para comprar itens dos clientes vips adicionando eles ao carrinho, junto das suas regalias com opções extras e os descontos"""
         valor = 0
         carrinho = []
 
