@@ -1,0 +1,3 @@
+from exercicio2.notificacao import Notificacao
+from exercicio2.pagamento import Pagamento
+from exercicio2.pagamento_com_notificacao import PagamentoComNotificacao

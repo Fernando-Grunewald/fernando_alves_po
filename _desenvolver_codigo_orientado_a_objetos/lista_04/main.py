@@ -17,8 +17,8 @@ def lista_4():
         match opcao:
             case 1:
                 exercicio_01()
-            # case 2:
-            #     exercicio_02()
+            case 2:
+                exercicio_02()
             # case 3:
             #     exercicio_03()
             # case 4:
