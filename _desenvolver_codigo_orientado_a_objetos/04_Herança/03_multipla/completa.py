@@ -2,7 +2,7 @@ class Pagamento:
     def __init__(self, valor): 
         self._valor = valor             
         self.__confirmado = False       
- 
+  
     @property 
     def confirmado(self): 
         return self.__confirmado 

@@ -43,7 +43,7 @@ class Aluno:
             self.__senha_portal = nova_senha
         else:
             print("A senha nova precisa ter ao menos 6 caracteres.")
-            
+             
     
     @matricula.setter
     def matricula(self, nova_matricula: int):

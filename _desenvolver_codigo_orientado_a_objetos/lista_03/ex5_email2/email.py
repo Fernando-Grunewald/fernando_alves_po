@@ -6,7 +6,7 @@ class Usuario5:
             print("Email válido. Parabéns!")
         self.nome = nome
         self.email = email
-
+ 
     @staticmethod
     def validar_email(email):
         """Método estático pra validar o email"""

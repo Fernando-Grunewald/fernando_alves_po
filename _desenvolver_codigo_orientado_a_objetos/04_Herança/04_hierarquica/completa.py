@@ -84,7 +84,7 @@ class Eletronico(Produto):
     @staticmethod 
     def tipo_eletronico(): 
         print("Tipo: Produto Eletrônico") 
- 
+  
  
 # Testes 
 l = Livro("Python 101", 59.90, "João") 
