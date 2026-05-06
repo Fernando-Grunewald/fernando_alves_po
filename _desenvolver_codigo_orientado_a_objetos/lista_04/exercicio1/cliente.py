@@ -43,7 +43,7 @@ class Cliente(Usuario):
     #         cliente.exibir_detalhes()
     #         print("-" * 20)
 
-    def comprar_itens(self): # Posso tentar fazer isso no cliente vip com super. mas vai ficar confuso ;_;
+    def comprar_itens(self): # Posso tentar fazer isso no cliente vip com super.
         """Método para comprar itens dos clientes"""
         valor = 0
         carrinho = []
