@@ -6,7 +6,8 @@ def exercicio_01():
 
     clientes = []
     clientes_vips = []
-
+    trafego = 0
+    trafego_vip = 0
     cliente_atual = ""
     
     while True:
@@ -53,12 +54,16 @@ def exercicio_01():
             case 3:
                 cliente_vip = ClienteVip.criar_vip()
                 clientes_vips.append(cliente_vip)
-                print("Cliente VIP registrado com sucesso.")
+                if len(clientes_vips) >= trafego_vip+1:
+                    cliente_vip.registro_sucesso_vip()
+                    trafego_vip += 1
 
             case 4:
                 cliente = Cliente.criar()
                 clientes.append(cliente)
-                print("Cliente registrado com sucesso.")
+                if len(clientes) >= trafego+1:
+                    cliente.registro_sucesso()
+                    trafego += 1
 
             case 5:
                 if cliente_atual != "":
@@ -77,10 +82,6 @@ def exercicio_01():
                     print("=" * 18)
                     print(f"Bem vindo(a) {nome}, o que deseja comprar hoje? ")
                     cliente_vip.comprar_itens_vip()
-                    # valor = int(input("Digite quanto deseja gastar: R$"))
-                    # print("=" * 18)
-                    # cliente_vip.comprar_vip()
-            
                 else:
                     print("\nVocê não está logado ou não está na lista vip!")
                     time.sleep(2)

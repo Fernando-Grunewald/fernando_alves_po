@@ -6,28 +6,27 @@ class ClienteVip(Cliente):
         self.desconto = desconto
         self.clientes_vips = []
 
-    # @classmethod
-    # def criar_vip(cls):
-    #     """Método de classe pra criar um cliente vip"""
-    #     nome = input("\nNome: ")
-    #     email = input("Email: ")
-    #     senha = input("Senha: ")
-    #     cpf = input("CPF: ")
-    #     saldo = float(input("Saldo inicial: "))
-    #     return cls(nome, email, senha, cpf, saldo)
-
     @classmethod
     def criar_vip(cls):
         """Método de classe com hierarquia para aproveitar a criação de cliente"""
-        print("[Criando Cliente VIP]")
-        cliente_base = super().criar()
+        try:
+            print("[Criando Cliente VIP]")
+            cliente_base = super().criar()
 
-        return cls(
-            cliente_base.nome,
-            cliente_base.email,
-            cliente_base.senha,
-            cliente_base.cpf,
-            cliente_base.saldo,)
+            return cls(
+                cliente_base.nome,
+                cliente_base.email,
+                cliente_base.senha,
+                cliente_base.cpf,
+                cliente_base.saldo,)
+    
+        except ValueError as erro:
+            print(f"\nErro: {erro}")
+            return None
+    
+    def registro_sucesso_vip():
+        """Método de inst}ancia"""
+        print("Cliente Vip registrado com sucesso.")
 
     def acesso_exclusivo(self):
         """Método de Instância"""
