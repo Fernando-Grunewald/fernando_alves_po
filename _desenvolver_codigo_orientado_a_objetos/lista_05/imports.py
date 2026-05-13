@@ -1,0 +1,1 @@
+from exercicio1.executar_exercicio1 import slimepedia

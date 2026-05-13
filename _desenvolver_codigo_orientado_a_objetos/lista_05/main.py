@@ -1,3 +1,38 @@
+from imports import *
+
+def lista_5():
+   print("-" * 20)
+   while True:
+
+        print("\n Lista de Exercícios 4\n")
+        print("[1] - Exercício 1.")
+        print("[2] - Exercício 2.")
+        print("[3] - Exercício 3.")
+        print("[4] - Exercício 4.")
+        print("[5] - Exercício 5.")
+        print("[0] - Sair")
+        print("-" * 20)
+
+        opcao = int(input("Escolha uma opção: "))
+
+        match opcao:
+            case 1:
+                slimepedia()
+            case 2:
+                exercicio_02()
+            # case 3:
+            #     exercicio_03()
+            # case 4:
+            #     exercicio_04()
+            case 0:
+                print("Encerrando script. Até mais...")
+                break
+            case _:
+                print(f" A opção {opcao} é inválida. Tente novamente.")
+                
+if __name__ == "__main__":
+    lista_5()
+    
 # Regra comum para todos os exercícios:
 # Toda interação com o usuário deve ser feita via menu interativo na função main() do 
 # programa principal.
