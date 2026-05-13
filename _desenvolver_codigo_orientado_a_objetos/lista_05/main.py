@@ -19,11 +19,13 @@ def lista_5():
             case 1:
                 slimepedia()
             case 2:
-                exercicio_02()
-            # case 3:
-            #     exercicio_03()
-            # case 4:
-            #     exercicio_04()
+                pass
+            case 3:
+                magos_wow()
+            case 4:
+                pass
+            case 5:
+                pass
             case 0:
                 print("Encerrando script. Até mais...")
                 break

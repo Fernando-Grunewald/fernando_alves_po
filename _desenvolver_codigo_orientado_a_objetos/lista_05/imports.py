@@ -1,1 +1,2 @@
 from exercicio1.executar_exercicio1 import slimepedia
+from exercicio3.executar_exercicio3 import magos_wow
