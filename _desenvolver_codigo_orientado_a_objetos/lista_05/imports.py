@@ -1,2 +1,3 @@
 from exercicio1.executar_exercicio1 import slimepedia
+from exercicio2.executar_exercicio2 import divisao_e_multiplicacao
 from exercicio3.executar_exercicio3 import magos_wow

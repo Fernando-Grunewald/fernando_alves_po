@@ -17,7 +17,8 @@
 
 """
 Exercício 3 que usa hierarquia de classes para criar uma classe que passa seus 3 métodos para 3 outras subclasses. Cada uma das 4 classes sobreescreve seus métodos de mesmo nome com descrições diferentes.
-O programa executa de forma automatica a criação dos 4 objetos para evidenciar dentro de um laço for que os métodos são alterados para cada objeto de acordo com sua classe respectiva 
+O programa executa de forma automatica a criação dos 4 objetos para evidenciar dentro de um laço for que os métodos são alterados para cada objeto de acordo com sua classe respectiva.
+O exercício me deu liberdade criativa para criar classes de acordo com a classe e as subclasses de magos em Wolrd of Warcraft.
 
 Autor: Fernando Alves Grunevald
 Data: 13/05/2026    

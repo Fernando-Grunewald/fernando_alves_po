@@ -19,7 +19,7 @@ def lista_5():
             case 1:
                 slimepedia()
             case 2:
-                pass
+                divisao_e_multiplicacao()
             case 3:
                 magos_wow()
             case 4:

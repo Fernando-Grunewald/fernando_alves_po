@@ -15,20 +15,60 @@
 # Crie exemplos para mostrar as diferenças de comportamento conforme o objeto 
 # usado.
 
-class Divisao:
-    def __init__(self, valor):
-        self.valor = valor
-        
-    def __truediv__(self, outro_valor):
-        return Divisao(self.valor + outro_valor.valor)
-    
-    def __str__(self): # acho que isso aqui é pra exibir resultado em print.
-        return f"Divisão: {self.valor}"
-        
-class Multiplicacao:
-    def __init__(self):
-        pass
+from exercicio2.utils import *
 
+def divisao_e_multiplicacao():
+    input("\n Olá usuário, gostaria de praticar operações matemáticas? (excluindo soma e subtração)")
+
+    while True:
+        print("\n [ Operações disponíveis ]")
+        print("1 - Executar uma divisão simples.")
+        print("2 - Executar uma divisão inteira.")
+        print("3 - Executar uma multiplicação.")
+        print("4 - Executar uma potência.")
+        print("0 - Sair")
+
+        try:
+            opcao = int(input("\n Escolha uma operação: "))
+            entrada1 = float(input("Digite o primeiro número: "))
+            entrada2 = float(input("Digite o segundo número: "))
+
+        except ValueError:
+            print("Escolha uma opção válida! ")
+            continue
+
+        match opcao:
+
+            case 1:
+                numero1 = DivisaoFloat(entrada1)
+                numero2 = DivisaoFloat(entrada2)
+                dividido = numero1 / numero2
+                input(dividido)
+
+            case 2:
+                numero1 = DivisaoInt(entrada1)
+                numero2 = DivisaoInt(entrada2)
+                divididao = numero1 // numero2
+                input(divididao)
+
+            case 3:
+                numero1 = Multiplicacao(entrada1)
+                numero2 = Multiplicacao(entrada2)
+                multiplicado = numero1 * numero2
+                input(multiplicado)
+
+            case 4:
+                numero1 = Potencia(entrada1)
+                numero2 = Potencia(entrada2)
+                potencia = numero1 ** numero2
+                input(potencia)
+
+            case 0:
+                print("Até logo...")
+                break
+
+if __name__ == "__main__":
+    divisao_e_multiplicacao()
 
 # Operadores Aritméticos (Binários)
 # __add__(self, other): Adição (+)
