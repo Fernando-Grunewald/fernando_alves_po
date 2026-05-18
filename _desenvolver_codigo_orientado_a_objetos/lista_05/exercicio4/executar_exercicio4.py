@@ -14,3 +14,58 @@
 # Implemente a interação para criar e manipular objetos desses tipos via menu, usando 
 # polimorfismo com funções, operadores e herança.
 
+class Mago:
+    def __init__(self, nome, raca, nivel):
+        self.nome = nome
+        self.raca = raca
+        self.nivel = nivel
+        
+    @classmethod
+    def criar_mago(cls):
+        print("Vamos criar um mago!")
+        try:
+            nome = input("\nNome: ")
+            raca = input("Raça do personagem: ")
+            nivel = int(input("Digite o Nível:"))
+            # while True:
+            #     print("\n [ Escolha a especialzação dele!")
+            #     print(" [ Mago Gélido - 1")
+            #     print(" [ Mago Arcano - 2")
+            #     print(" [ Mago Flamejante - 3")
+            #     especializacao = int(input("\n Digite aqui: "))
+                
+            #     match especializacao:
+            #         case 1:
+            #             especializacao = "Mago Gélido"
+            #             break
+                        
+            #         case 2:
+            #             especializacao = "Mago Arcano"
+            #             break
+                        
+            #         case 3:
+            #             especializacao = "Mago Flamejante"
+            #             break
+                        
+            #         case _:
+            #             print("\n Você precisa digitar 1 , 2 OU 3!")
+            # subclasse = especializacao
+            return cls(nome, raca, nivel)
+            
+        except ValueError as erro:
+            print(f"\n Erro: {erro}")
+            return None
+        
+            
+class MagoArcano(Mago):
+    def __init__(self, nome, raca, nivel):
+        super().__init__(nome, raca, nivel)
+    
+class LancaFeiticos(MagoArcano or MagoGélido):
+    pass
+    
+    
+    
+        
+    
+        
